@@ -1,0 +1,33 @@
+[build-system]
+requires = ["setuptools>=42", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "freenewsapi"
+version = "1.0.0"
+description = "A Python SDK for FreeNewsAPI"
+readme = "README.md"
+requires-python = ">=3.7"
+license = { text = "MIT" }
+authors = [
+    { name="FreeNewsAPI", email="contact@freenewsapi.com" },
+]
+keywords = ["news", "api", "sdk", "freenewsapi"]
+classifiers = [
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.7",
+    "Programming Language :: Python :: 3.8",
+    "Programming Language :: Python :: 3.9",
+    "Programming Language :: Python :: 3.10",
+    "License :: OSI Approved :: MIT License",
+    "Operating System :: OS Independent",
+]
+dependencies = [
+    # List dependencies here, if any
+    "requests>=2.25.0",
+    "certifi>=2020.12.5",
+]
+
+[project.urls]
+Homepage = "https://github.com/FreeNews-API/python-sdk"
+Bug Tracker = "https://github.com/FreeNews-API/python-sdk/issues"
