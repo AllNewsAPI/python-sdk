@@ -3,7 +3,7 @@ Example usage of the Free News API Python SDK.
 """
 
 import datetime
-from freenewsapi import NewsAPI, NewsAPIError
+from allnewsapi import NewsAPI, NewsAPIError
 
 def main():
     # Replace with your actual API key

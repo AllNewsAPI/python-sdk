@@ -3,24 +3,27 @@ requires = ["setuptools>=42", "wheel"]
 build-backend = "setuptools.build_meta"
 
 [project]
-name = "freenewsapi"
+name = "allnewsapi"
 version = "1.0.0"
-description = "A Python SDK for FreeNewsAPI"
+description = "A Python SDK for AllNewsAPI"
 readme = "README.md"
 requires-python = ">=3.7"
 license = { text = "MIT" }
 authors = [
-    { name="FreeNewsAPI", email="contact@freenewsapi.com" },
+    { name="AllNewsAPI", email="contact@allnewsapi.com" },
 ]
-keywords = ["news", "api", "sdk", "freenewsapi"]
+keywords = ["news", "api", "sdk", "allnewsapi"]
 classifiers = [
     "Programming Language :: Python :: 3",
     "Programming Language :: Python :: 3.7",
     "Programming Language :: Python :: 3.8",
     "Programming Language :: Python :: 3.9",
     "Programming Language :: Python :: 3.10",
+    "Programming Language :: Python :: 3.11",
+    "Programming Language :: Python :: 3.12",
+    "Programming Language :: Python :: 3.13",
     "License :: OSI Approved :: MIT License",
-    "Operating System :: OS Independent",
+    "Operating System :: OS Independent"
 ]
 dependencies = [
     # List dependencies here, if any
@@ -29,5 +32,5 @@ dependencies = [
 ]
 
 [project.urls]
-Homepage = "https://github.com/FreeNews-API/python-sdk"
-Bug Tracker = "https://github.com/FreeNews-API/python-sdk/issues"
+Homepage = "https://github.com/AllNewsAPI/python-sdk"
+BugTracker = "https://github.com/AllNewsAPI/python-sdk/issues"

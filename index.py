@@ -1,5 +1,5 @@
 """
-FreeNewsAPI Python SDK
+AllNewsAPI Python SDK
 
 A Python wrapper for the Free News API.
 """
@@ -27,13 +27,13 @@ class NewsAPIError(Exception):
 class NewsAPI:
     """Client for the Free News API."""
 
-    def __init__(self, api_key: str, base_url: str = "https://api.freenewsapi.com", timeout: int = 60):
+    def __init__(self, api_key: str, base_url: str = "https://api.allnewsapi.com", timeout: int = 60):
         """
         Initialize the NewsAPI client.
 
         Args:
             api_key: Your Free News API key
-            base_url: The base URL for the API (default: https://api.freenewsapi.com)
+            base_url: The base URL for the API (default: https://api.allnewsapi.com)
             timeout: Request timeout in seconds (default: 60)
         
         Raises:
@@ -45,14 +45,16 @@ class NewsAPI:
         self.api_key = api_key
         self.base_url = base_url
         self.search_endpoint = f"{base_url}/v1/search"
+        self.headlines_endpoint = f"{base_url}/v1/headlines"
         self.timeout = timeout
 
-    def _build_url(self, params: dict) -> str:
+    def _build_url(self, params: dict, endpoint: str) -> str:
         """
         Build the URL with query parameters for the API request.
         
         Args:
-            params: Query parameters for the search
+            params: Query parameters for the request
+            endpoint: The API endpoint to use
             
         Returns:
             The complete URL for the API request
@@ -86,7 +88,7 @@ class NewsAPI:
         # Build query string
         query_string = urlencode(params)
         
-        return f"{self.search_endpoint}?{query_string}"
+        return f"{endpoint}?{query_string}"
 
     def _get_error_message(self, status_code: int) -> str:
         """
@@ -109,12 +111,13 @@ class NewsAPI:
         
         return error_messages.get(status_code, f"Unknown error with status code: {status_code}")
 
-    def _make_request(self, params: dict) -> typing.Union[dict, bytes]:
+    def _make_request(self, params: dict, endpoint: str) -> typing.Union[dict, bytes]:
         """
         Make a request to the API.
         
         Args:
             params: Query parameters for the request
+            endpoint: The API endpoint to use
             
         Returns:
             The API response (JSON dict or bytes for non-JSON formats)
@@ -122,7 +125,7 @@ class NewsAPI:
         Raises:
             NewsAPIError: If the API request fails
         """
-        url = self._build_url(params)
+        url = self._build_url(params, endpoint)
         
         try:
             response = requests.get(url, timeout=self.timeout)
@@ -182,4 +185,33 @@ class NewsAPI:
         Raises:
             NewsAPIError: If the API request fails
         """
-        return self._make_request(kwargs)
+        return self._make_request(kwargs, self.search_endpoint)
+
+    def headlines(self, **kwargs) -> typing.Union[dict, bytes]:
+        """
+        Get news headlines.
+        
+        Args:
+            **kwargs: Query parameters for the headlines
+            q (str): Keywords to search for
+            startDate (str, datetime): Start date
+            endDate (str, datetime): End date
+            content (bool): Whether to include full content
+            lang (str, list): Language(s) to filter by
+            country (str, list): Country/countries to filter by
+            region (str, list): Region(s) to filter by
+            category (str, list): Category/categories to filter by
+            max (int): Maximum number of results
+            attributes (str, list): Attributes to search in (title, description, content)
+            page (int): Page number for pagination
+            sortby (str): Sort by 'publishedAt' or 'relevance'
+            publisher (str, list): Publisher(s) to filter by
+            format (str): Response format (json, csv, xlsx)
+                
+        Returns:
+            Headlines results (dict for JSON, bytes for other formats)
+            
+        Raises:
+            NewsAPIError: If the API request fails
+        """
+        return self._make_request(kwargs, self.headlines_endpoint)

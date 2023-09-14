@@ -4,18 +4,18 @@ with open("README.md", "r", encoding="utf-8") as fh:
     long_description = fh.read()
 
 setup(
-    name="freenewsapi",
+    name="allnewsapi",
     version="1.0.0",
-    author="FreeNewsAPI",
-    author_email="contact@freenewsapi.com",
-    description="A Python SDK for FreeNewsAPI",
+    author="AllNewsAPI",
+    author_email="contact@allnewsapi.com",
+    description="A Python SDK for AllNewsAPI",
     long_description=long_description,
     long_description_content_type="text/markdown",
-    url="https://github.com/FreeNews-API/python-sdk",
-    keywords=["news data api", "news api", "news sdk", "freenewsapi"],
+    url="https://github.com/AllNewsAPI/python-sdk",
+    keywords=["news data api", "news api", "news sdk", "allnewsapi"],
     license="MIT",
     project_urls={
-        "Bug Tracker": "https://github.com/FreeNews-API/python-sdk/issues",
+        "Bug Tracker": "https://github.com/AllNewsAPI/python-sdk/issues",
     },
     classifiers=[
         "Programming Language :: Python :: 3",

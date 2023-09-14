@@ -1,5 +1,5 @@
 """
-FreeNewsAPI - Python SDK for FreeNewsAPI
+AllNewsAPI - Python SDK for AllNewsAPI
 """
 
 from index import NewsAPI, NewsAPIError
